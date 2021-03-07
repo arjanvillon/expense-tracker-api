@@ -15,3 +15,19 @@ class TransactionSerializer(serializers.ModelSerializer):
             "date",
             "note",
         ]
+
+    def create(self, validated_data):
+        transaction = Transaction.objects.create(**validated_data)
+        category = validated_data["category"]
+        wallet = validated_data["wallet"]
+        amount = validated_data["amount"]
+
+        if category == "Income":
+            wallet.balance = wallet.balance + amount
+        elif category == "Debt" or category == "Expense":
+            wallet.balance = wallet.balance - amount
+
+        wallet.save()
+        transaction.save()
+
+        return transaction

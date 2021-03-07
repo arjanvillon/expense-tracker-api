@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from .models import (Wallet,)
 
+
 class RegisterSerializer(serializers.ModelSerializer):
     """ Serializes registration of a user """
 
@@ -22,6 +23,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return user
 
+
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
@@ -31,6 +33,7 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError("Incorrect Credentials")
+
 
 class WalletSerializer(serializers.ModelSerializer):
     """ Serializes Wallets of user """
@@ -45,6 +48,7 @@ class WalletSerializer(serializers.ModelSerializer):
             "name",
             "balance"
         ]
+
 
 class UserSerializer(serializers.ModelSerializer):
     """ Serializes User """
