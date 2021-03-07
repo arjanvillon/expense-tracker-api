@@ -75,8 +75,8 @@ DATABASES = {
         'NAME': "expensedb",
         'USER': 'DB_USERNAME',
         'PASSWORD': 'DB_PASSWORD',
-        'HOST': 'DB_HOSTNAME', # default='127.0.0.1',
-        'PORT': 'DB_PORT' # default='5432',
+        'HOST': 'DB_HOSTNAME',  # default='127.0.0.1',
+        'PORT': 'DB_PORT'  # default='5432',
     }
 }
 
@@ -128,3 +128,14 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = [
     "http://127.0.0.1:3000",
 ]
+
+# SSL/TLS Settings
+CORS_REPLACE_HTTPS_REFERER = False
+HOST_SCHEME = "http://"
+SECURE_PROXY_SSL_HEADER = None
+SECURE_SSL_REDIRECT = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_HSTS_SECONDS = None
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_FRAME_DENY = False
